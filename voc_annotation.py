@@ -3,7 +3,7 @@ from os import getcwd
 
 sets=[('2007', 'train'), ('2007', 'val'), ('2007', 'test')]
 
-wd = getcwd()
+# wd = getcwd()
 classes = ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
 
 def convert_annotation(year, image_id, list_file):
@@ -12,7 +12,7 @@ def convert_annotation(year, image_id, list_file):
     root = tree.getroot()
     if root.find('object')==None:
         return
-    list_file.write('%s/VOCdevkit/VOC%s/JPEGImages/%s.jpg'%(wd, year, image_id))
+    list_file.write('%s/VOCdevkit/VOC%s/JPEGImages/%s.jpg'%('.', year, image_id))
     for obj in root.iter('object'):
         difficult = obj.find('difficult').text
         cls = obj.find('name').text

@@ -1,4 +1,5 @@
 ## Efficientdet：Scalable and Efficient Object目标检测模型在Pytorch当中的实现
+## 转载：https://github.com/bubbliiiing/efficientdet-pytorch
 ---
 
 ### 目录

@@ -382,10 +382,30 @@ for txt_file in ground_truth_files_list:
     for line in lines_list:
         try:
             if "difficult" in line:
+                haha = line.split()
+                haha_size = haha.__len__()
+                if haha_size == 6:
                     class_name, left, top, right, bottom, _difficult = line.split()
-                    is_difficult = True
+                if haha_size == 7:
+                    _difficult = haha[6]
+                    bottom = haha[5]
+                    right = haha[4]
+                    top = haha[3]
+                    left = haha[2]
+                    class_name = haha[0]+" "+haha[1]
+                is_difficult = True
             else:
+                # class_name, left, top, right, bottom = line.split()
+                haha = line.split()
+                haha_size = haha.__len__()
+                if haha_size == 5:
                     class_name, left, top, right, bottom = line.split()
+                if haha_size == 6:
+                    bottom = haha[5]
+                    right = haha[4]
+                    top = haha[3]
+                    left = haha[2]
+                    class_name = haha[0]+" "+haha[1]
         except ValueError:
             error_msg = "Error: File " + txt_file + " in the wrong format.\n"
             error_msg += " Expected: <class_name> <left> <top> <right> <bottom> ['difficult']\n"
@@ -477,7 +497,18 @@ for class_index, class_name in enumerate(gt_classes):
         lines = file_lines_to_list(txt_file)
         for line in lines:
             try:
-                tmp_class_name, confidence, left, top, right, bottom = line.split()
+                # tmp_class_name, confidence, left, top, right, bottom = line.split()
+                haha = line.split()
+                haha_size = haha.__len__()
+                if haha_size == 6:
+                    tmp_class_name, confidence, left, top, right, bottom = line.split()
+                if haha_size == 7:
+                    bottom = haha[6]
+                    right = haha[5]
+                    top = haha[4]
+                    left = haha[3]
+                    confidence = haha[2]
+                    tmp_class_name = haha[0]+" "+haha[1]
             except ValueError:
                 error_msg = "Error: File " + txt_file + " in the wrong format.\n"
                 error_msg += " Expected: <class_name> <confidence> <left> <top> <right> <bottom>\n"
